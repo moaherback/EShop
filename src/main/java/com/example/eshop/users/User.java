@@ -3,7 +3,7 @@ package com.example.eshop.users;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name="users")
+@Table(name = "users")
 
 public class User {
     @Id
@@ -11,6 +11,16 @@ public class User {
     private int userId;
 
     private String username;
+
+    private String password;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {
+    }
 
     public int getUserId() {
         return userId;

@@ -24,6 +24,9 @@ public class UserController {
                    @RequestParam String password){
         System.out.println(username);
         System.out.println(password);
+        User user = new User(username, password);
+        System.out.println(user.getUserId());
+        userService.add( user);
         return "usercreatepage";
     }
 

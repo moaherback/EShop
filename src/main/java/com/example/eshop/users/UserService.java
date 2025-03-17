@@ -14,10 +14,8 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-
     void add(User user) {
         userRepository.save(user);
-
     }
 
     public List<User> getUsers() {
