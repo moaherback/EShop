@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+/*@Service
 public class OrderService {
     @Autowired
     OrderRepository orderRepository;
     public List<Order> getProducts() {
         return orderRepository.findAll();
     }
-}
+}*/
