@@ -14,7 +14,6 @@ public class UserController {
 
     @GetMapping("/user/create")
     String getCreate(Model model) {
-
         return "usercreatepage";
     }
 

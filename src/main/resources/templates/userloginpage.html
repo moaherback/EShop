@@ -14,9 +14,11 @@
   <input type="text" id="username" name="username"> <br/> <br/>
   <label for="password">Password:</label>
   <input type="text" id="password" name="password"> <br/> <br/>
-  <input name="submit" type="submit" value="Login">
+  <input name="submit" type="submit" value="Login"> <br/> <br/>
 </form>
 <span th:if="${loginfailed == true}">Failed to login</span>
+
+<a href="/user/create"> Create an account </a>
 
 </body>
 </html>
