@@ -6,7 +6,16 @@
 </head>
 <body>
     <h1> Products</h1>
-  <p> th:text="${products}"></p>
+
+    <div th:each="product : ${products}"><br/> <br/>
+        <form th:action="@{/}" method="post" >
+            <p> <span th:text="${product.productName}"/></p>
+            <p> Product Id: <span th:text="${product.productId}"/> </p>
+            <p> Price: <span th:text="${product.productPrice}"/> </p>
+            <p> Amount: <input type="number" value="0"></p>
+            <p> <input type="submit" value="Add"></p>
+        </form>
+    </div>
 
 
 
