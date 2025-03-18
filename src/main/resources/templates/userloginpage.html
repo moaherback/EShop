@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>userloginpage</title>
+    <script th:if="${loginsuccess == true}">
+        window.location.href = '/products';
+    </script>
+</head>
+<h2> Log in: </h2>
+<body>
+<form method="post" action="/user/login">
+  <label for="username">Username: </label>
+  <input type="text" id="username" name="username"> <br/> <br/>
+  <label for="password">Password:</label>
+  <input type="text" id="password" name="password"> <br/> <br/>
+  <input name="submit" type="submit" value="Login">
+</form>
+<span th:if="${loginfailed == true}">Failed to login</span>
+
+</body>
+</html>

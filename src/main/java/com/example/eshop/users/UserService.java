@@ -21,4 +21,10 @@ public class UserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
+    public User getUser(String username, String password) {
+        User user = userRepository.getUserByUsernameAndPassword(username, password);
+        System.out.println(user);
+        return user;
+    }
 }

@@ -30,4 +30,26 @@ public class UserController {
         return "usercreatepage";
     }
 
+    @GetMapping("/user/login")
+    String getLogin(Model model){
+        return "userloginpage";
+    }
+
+    @PostMapping ("/user/login")
+    String login(Model model,
+                 @RequestParam String username,
+                 @RequestParam String password) {
+        System.out.println(username);
+        System.out.println(password);
+
+        User user = userService.getUser(username, password);
+
+        if (user == null) {
+            model.addAttribute("loginfailed", true);
+        } else {
+            model.addAttribute("loginsuccess", true);
+        }
+
+        return "userloginpage";
+    }
 }
