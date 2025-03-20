@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createproduct</title>
+</head>
+<h2> Create new product: </h2>
+
+<form method="post" action="/product/create">
+    <label for="productCategory"> Product category:</label>
+    <select id="productCategory" name="productCategory">
+        <option th:each="productcategory : ${productcategories}"
+                th:value="${productcategory}"
+                th:text="${productcategory.name()}">
+        </option>
+    </select>
+    <br/> <br/>
+    <label for="productname"> Product name: </label>
+    <input type="text" id="productname" name="productname"> <br/> <br/>
+    <label for="productprice">Product price:</label>
+    <input type="text" id="productprice" name="productprice"> <br/> <br/>
+    <input name="submit" type="submit" value="Create product"> <br/> <br/>
+</form>
+
+<span th:if="${productcreatesucces == true}">You have created: <span th:text="${productname}"></span> </span>
+
+
+<body>
+
+</body>
+</html>
