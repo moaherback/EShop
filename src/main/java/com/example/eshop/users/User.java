@@ -14,9 +14,20 @@ public class User {
 
     private String password;
 
+    private int role; //0=customer, 1=admin
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.role = 0; //user are customer by default
     }
 
     public User() {
@@ -37,5 +48,6 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
 
 }

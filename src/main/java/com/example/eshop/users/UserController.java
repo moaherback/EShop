@@ -38,17 +38,17 @@ public class UserController {
     String login(Model model,
                  @RequestParam String username,
                  @RequestParam String password) {
-        System.out.println(username);
-        System.out.println(password);
 
-        User user = userService.getUser(username, password);
+        User user = userService.login(username, password);
 
         if (user == null) {
             model.addAttribute("loginfailed", true);
         } else {
             model.addAttribute("loginsuccess", true);
         }
-
+        System.out.println("logedinuser: " + userService.getLoggedInUser().getUsername());
+        System.out.println("role: " + userService.getLoggedInUser().getRole());
         return "userloginpage";
     }
+
 }
