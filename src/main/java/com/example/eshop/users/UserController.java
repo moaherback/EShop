@@ -46,9 +46,6 @@ public class UserController {
         } else {
             model.addAttribute("loginsuccess", true);
         }
-        System.out.println("logedinuser: " + userService.getLoggedInUser().getUsername());
-        System.out.println("role: " + userService.getLoggedInUser().getRole());
         return "userloginpage";
     }
-
 }
