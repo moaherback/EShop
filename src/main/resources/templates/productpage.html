@@ -8,14 +8,16 @@
     <h2> Products</h2>
 
     <div th:each="product : ${products}"><br/> <br/>
-        <form th:action="@{/}" method="post" >
+        <form action="basket/add" method="post">
             <p> <span th:text="${product.productName}"/></p>
             <p> Product Id: <span th:text="${product.productId}"/> </p>
             <p> Product category: <span th:text="${product.productCategory}"/> </p>
             <p> Price: <span th:text="${product.productPrice}"/> </p>
-            <p> Amount: <input type="number" value="0"></p>
+            <p> Amount: <input type="number" name="quantity" value="0"></p>
             <p> <input type="submit" value="Add"></p>
+            <input type="hidden" name="productId" th:value="${product.productId}" />
         </form>
+
     </div>
 
 </body>

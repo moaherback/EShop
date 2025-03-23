@@ -14,17 +14,27 @@ public class BasketService {
     private Basket currentBasket = new Basket();
 
 
-    public void addProduct(String productId, int quantity) {
-        int currentQuantity = currentBasket.getProducts().get(productId);
+    public void addProduct(int productId, int quantity) {
+        int currentQuantity;
+        if (currentBasket.getProducts().get(productId) == null) {
+            currentQuantity = 0;
+        } else {
+            currentQuantity = currentBasket.getProducts().get(productId);
+        }
         currentBasket.getProducts().put(productId, quantity + currentQuantity);
     }
 
-    public void removeProduct(String productId) {
+    public void removeProduct(int productId) {
         currentBasket.getProducts().remove(productId);
     }
 
-    public void decreaseProduct(String productId, int quantity) {
-        int currentQuantity = currentBasket.getProducts().get(productId);
+    public void decreaseProduct(int productId, int quantity) {
+        int currentQuantity;
+        if (currentBasket.getProducts().get(productId) == null) {
+            currentQuantity = 0;
+        } else {
+            currentQuantity = currentBasket.getProducts().get(productId);
+        }
         if (currentQuantity - quantity <= 0) {
             currentBasket.getProducts().remove(productId);
         } else {
