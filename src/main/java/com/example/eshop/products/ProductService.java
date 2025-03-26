@@ -16,4 +16,9 @@ public class ProductService {
     public void addProduct(Product product) {
         productRepository.save(product);
     }
+
+    public List<Product> getProductById(List<Integer> productIds) {
+        return productRepository.findByProductIdIn(productIds);
+    }
+
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>basket</title>
+</head>
+<body>
+<h2> Basket </h2>
+
+<div th:each="basket : ${basketview.products}"><br/> <br/>
+    <form action="/basket/update" method="post">
+        <p> <span th:text="${basket.productName}"></span></p>
+        <p> Unit price: <span th:text="${basket.productPrice}"></span> </p>
+        <p> Amount: <input type="number" name="quantity" th:value="${basket.quantity}"></p>
+        <p> Total price: <span th:text="${basket.getTotalPrice()}"></span> </p>
+        <p> <input type="submit" value="Uppdate"></p>
+        <input type="hidden" name="productId" th:value="${basket.productId}" />
+    </form>
+    <form action="/basket/remove" method="post">
+        <input type="hidden" name="productId" th:value="${basket.productId}" />
+        <button type="submit">❌ Remove product </button>
+    </form>
+</div>
+<br/>
+<span>Total price: </span>
+<span th:text="${basketview.totalPrice}"></span>
+
+</body>
+</html>
