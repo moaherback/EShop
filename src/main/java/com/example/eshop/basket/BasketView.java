@@ -21,7 +21,7 @@ public class BasketView {
         return products;
     }
 
-    static class BasketProductView{
+    public static class BasketProductView{
 
         int productId;
         String productName;

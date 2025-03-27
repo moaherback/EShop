@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Entity
 @Table(name = "orders")
@@ -24,14 +25,11 @@ public class Order {
 
     private boolean dispatched;
 
-    public Order(int userId, List<OrderLine> orderLines) {
-        this.userId = userId;
-        this.orderLines = orderLines;
-        this.orderDate = LocalDateTime.now();
-        this.dispatched = false;
-    }
 
     public Order() {
+        this.orderId = ThreadLocalRandom.current().nextInt(10000);
+        this.orderDate = LocalDateTime.now();
+        this.dispatched = false;
     }
 
     public int getOrderId() {
