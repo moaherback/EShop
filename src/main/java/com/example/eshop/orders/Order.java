@@ -12,11 +12,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private int orderId;
 
     private int userId;
+
+    private int orderTotal;
 
     @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderLine> orderLines;
@@ -70,5 +71,13 @@ public class Order {
 
     public void setDispatched(boolean dispatched) {
         this.dispatched = dispatched;
+    }
+
+    public int getOrderTotal() {
+        return orderTotal;
+    }
+
+    public void setOrderTotal(int orderTotal) {
+        this.orderTotal = orderTotal;
     }
 }

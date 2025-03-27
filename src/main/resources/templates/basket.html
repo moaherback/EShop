@@ -24,6 +24,10 @@
 <br/>
 <span>Total price: </span>
 <span th:text="${basketview.totalPrice}"></span>
+<br/>
+<form action="/order/create" method="post">
+    <button type="submit"> Confirm order </button>
+</form>
 
 </body>
 </html>

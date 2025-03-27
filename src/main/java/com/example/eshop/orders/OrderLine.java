@@ -18,10 +18,13 @@ public class OrderLine {
 
     private int quantity;
 
-    public OrderLine(int orderId, int productId, int quantity) {
+    private int unitPrice;
+
+    public OrderLine(int orderId, int productId, int quantity, int unitPrice) {
         this.orderId = orderId;
         this.productId = productId;
         this.quantity = quantity;
+        this.unitPrice = unitPrice;
     }
     public OrderLine() {
     }
