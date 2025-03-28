@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <title>orderconfirmation</title>
 </head>
+<h2> Orderconfirmation </h2>
 <body>
-
+<span> Username: </span>
+<span th:text="${order.username}"></span>
+<table>
+    <tr>
+        <th>Product name</th>
+        <th>Product id</th>
+        <th>Unit price</th>
+        <th>Quantity</th>
+        <th>Total price</th>
+    </tr>
+    <tr th:each= "orderline: ${order.orderLines}">
+        <td th:text="${orderline.productName} "></td>
+        <td th:text="${orderline.productId} "></td>
+        <td th:text="${orderline.unitPrice} "></td>
+        <td th:text="${orderline.quantity} "></td>
+        <td th:text="${orderline.quantity * orderline.unitPrice} "></td>
+    </tr>
+</table>
+<span>Order total: </span>
+<span th:text="${order.orderTotal}"></span>
 </body>
 </html>

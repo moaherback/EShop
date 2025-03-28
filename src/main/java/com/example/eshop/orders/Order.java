@@ -19,6 +19,8 @@ public class Order {
 
     private int orderTotal;
 
+    private String username;
+
     @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderLine> orderLines;
 
@@ -79,5 +81,13 @@ public class Order {
 
     public void setOrderTotal(int orderTotal) {
         this.orderTotal = orderTotal;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

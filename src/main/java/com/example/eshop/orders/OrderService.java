@@ -2,6 +2,7 @@ package com.example.eshop.orders;
 
 import com.example.eshop.basket.BasketService;
 import com.example.eshop.basket.BasketView;
+import com.example.eshop.users.User;
 import com.example.eshop.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,18 +20,22 @@ public class OrderService {
     OrderRepository orderRepository;
 
 
-    public void createOrder() {
+    public Order createOrder() {
         Order order = new Order();
         BasketView basket = basketService.showBasket();
-        order.setUserId(userService.getLoggedInUser().getUserId());
+        User currentUser= userService.getLoggedInUser();
+        order.setUserId(currentUser.getUserId());
+        order.setUsername(currentUser.getUsername());
         order.setOrderLines(
                 basket.getProducts().stream()
                         .map(product -> new OrderLine(order.getOrderId(),
                                 product.getProductId(),
                                 product.getQuantity(),
-                                product.getProductPrice())).toList()
+                                product.getProductPrice(),
+                                product.getProductName())).toList()
         );
         order.setOrderTotal(basket.getTotalPrice());
         orderRepository.save(order);
+        return order;
     }
 }

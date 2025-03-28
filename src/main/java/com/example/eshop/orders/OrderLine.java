@@ -18,13 +18,16 @@ public class OrderLine {
 
     private int quantity;
 
+    private String productName;
+
     private int unitPrice;
 
-    public OrderLine(int orderId, int productId, int quantity, int unitPrice) {
+    public OrderLine(int orderId, int productId, int quantity, int unitPrice, String productName) {
         this.orderId = orderId;
         this.productId = productId;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
+        this.productName = productName;
     }
     public OrderLine() {
     }
@@ -59,6 +62,22 @@ public class OrderLine {
 
     public void setOrderLineId(int orderLineId) {
         this.orderLineId = orderLineId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(int unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }
 
