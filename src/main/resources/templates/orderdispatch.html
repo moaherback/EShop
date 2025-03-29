@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>orderdispatch</title>
+</head>
+<body>
+<h1> Orders </h1>
+
+<h2> Order not dispatched: </h2>
+
+<div th:each="order : ${notdispatchedorders}"><br/> <br/>
+    <form action="/admin/order/dispatch" method="post">
+        <p> <label for="orderId">Order id:</label>
+            <span id="orderId" th:text="${order.orderId}"></span></p>
+        <p><label for="orderDate">Order date:</label>
+            <span id="orderDate" th:text="${order.orderDate}"></span></p>
+        <p><label for="orderUsername">Username:</label>
+            <span id="orderUsername" th:text="${order.username}"></span></p>
+        <p><label for="orderTotal">Order total:</label>
+            <span id="orderTotal" th:text="${order.orderTotal}"></span></p>
+        <p><input type="submit" value="Dispatch"></p>
+        <input type="hidden" name="orderId" th:value="${order.orderId}"/>
+    </form>
+</div>
+
+
+<h2> Order dispatched:</h2>
+<div th:each="order : ${dispatchedorders}"><br/> <br/>
+        <p> <label for="dispatchedOrderId">Order id:</label>
+            <span id="dispatchedOrderId" th:text="${order.orderId}"></span></p>
+        <p><label for="dispatchedOrderDate">Order date:</label>
+            <span id="dispatchedOrderDate" th:text="${order.orderDate}"></span></p>
+        <p><label for="dispatchedOrderUsername">Username:</label>
+            <span id="dispatchedOrderUsername" th:text="${order.username}"></span></p>
+        <p><label for="dispatchedOrderToatal">Order total:</label>
+            <span id="dispatchedOrderToatal" th:text="${order.orderTotal}"></span></p>
+</div>
+</body>
+</html>

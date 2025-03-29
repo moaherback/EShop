@@ -31,8 +31,6 @@ public class ProductController {
                       @RequestParam ProductCategory productCategory,
                       @RequestParam String productname,
                       @RequestParam int productprice) {
-        System.out.println(productname);
-        System.out.println(productprice);
         Product product = new Product(productname, productprice, productCategory);
 
         productService.addProduct(product);

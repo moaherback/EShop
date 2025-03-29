@@ -38,4 +38,19 @@ public class OrderService {
         orderRepository.save(order);
         return order;
     }
+
+    public List<Order> getDispatchedOrders() {
+        return orderRepository.findByDispatched(true);
+    }
+    public List<Order> getNotDispatchedOrders() {
+        return orderRepository.findByDispatched(false);
+    }
+
+    public void dispatchOrder(int orderId) {
+        Order order = orderRepository.findById((long) orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        order.setDispatched(true);
+        orderRepository.save(order);
+    }
 }
