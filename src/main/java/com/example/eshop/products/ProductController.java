@@ -16,6 +16,7 @@ public class ProductController {
     @GetMapping("/products")
     String getProducts(Model model) {
         model.addAttribute("products", productService.getProducts());
+        model.addAttribute("productcategories", ProductCategory.values());
         return "productpage";
     }
 
@@ -32,17 +33,30 @@ public class ProductController {
                       @RequestParam int productprice) {
         System.out.println(productname);
         System.out.println(productprice);
-        Product product = new Product(productname, productprice,productCategory);
+        Product product = new Product(productname, productprice, productCategory);
 
         productService.addProduct(product);
 
         model.addAttribute("productcreatesucces", true);
-        model.addAttribute("productname",productname);
+        model.addAttribute("productname", productname);
         model.addAttribute("productcategories", ProductCategory.values());
-
-
 
         return "createproduct";
     }
 
+    @GetMapping("/products/category")
+    String getProductByCategory(Model model,
+                                @RequestParam ProductCategory productCategory) {
+        model.addAttribute("productcategories", ProductCategory.values());
+        model.addAttribute("products", productService.getProductsByCategory(productCategory));
+        return "productpage";
+    }
+
+    @GetMapping("/product/search")
+    String getProductByName(Model model,
+                            @RequestParam String name) {
+        model.addAttribute("productcategories", ProductCategory.values());
+        model.addAttribute("products", productService.getProductsByName(name));
+        return "productpage";
+    }
 }

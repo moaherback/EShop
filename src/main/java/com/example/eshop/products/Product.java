@@ -13,6 +13,7 @@ public class Product {
 
     private int productPrice;
 
+    @Enumerated(EnumType.STRING)
     private ProductCategory productCategory;
 
     public Product(String productName, int productPrice, ProductCategory productCategory) {

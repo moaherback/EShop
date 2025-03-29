@@ -5,20 +5,35 @@
     <title>products</title>
 </head>
 <body>
-    <h2> Products</h2>
+<h2> Products</h2>
+<h3> Search: </h3>
+<form action="/product/search" method="get">
+    <input type="text" name="name" placeholder="search">
+    <input type="submit" value="Search">
+</form>
 
-    <div th:each="product : ${products}"><br/> <br/>
-        <form action="basket/add" method="post">
-            <p> <span th:text="${product.productName}"/></p>
-            <p> Product Id: <span th:text="${product.productId}"/> </p>
-            <p> Product category: <span th:text="${product.productCategory}"/> </p>
-            <p> Price: <span th:text="${product.productPrice}"/> </p>
-            <p> Amount: <input type="number" name="quantity" value="0"></p>
-            <p> <input type="submit" value="Add"></p>
-            <input type="hidden" name="productId" th:value="${product.productId}" />
-        </form>
-
+<h3> Categories: </h3>
+<form action="/products/category" method="get">
+    <div th:each="productcategory : ${productcategories}">
+        <button type="submit" name="productCategory" th:value="${productcategory}"
+                th:text="${productcategory.name()}"></button>
+        <br/> <br/>
     </div>
+</form>
+
+
+<div th:each="product : ${products}"><br/> <br/>
+    <form action="basket/add" method="post">
+        <p><span th:text="${product.productName}"/></p>
+        <p> Product Id: <span th:text="${product.productId}"/></p>
+        <p> Product category: <span th:text="${product.productCategory}"/></p>
+        <p> Price: <span th:text="${product.productPrice}"/></p>
+        <p> Amount: <input type="number" name="quantity" value="0"></p>
+        <p><input type="submit" value="Add"></p>
+        <input type="hidden" name="productId" th:value="${product.productId}"/>
+    </form>
+
+</div>
 
 </body>
 </html>

@@ -9,6 +9,7 @@ import java.util.List;
 public class ProductService {
     @Autowired
     ProductRepository productRepository;
+
     public List<Product> getProducts() {
         return productRepository.findAll();
     }
@@ -21,4 +22,11 @@ public class ProductService {
         return productRepository.findByProductIdIn(productIds);
     }
 
+    public List<Product> getProductsByCategory(ProductCategory category) {
+        return productRepository.findByProductCategory(category);
+    }
+
+    public List<Product> getProductsByName(String name) {
+        return productRepository.findByProductNameContaining(name);
+    }
 }
