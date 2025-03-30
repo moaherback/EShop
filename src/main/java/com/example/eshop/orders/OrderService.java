@@ -6,7 +6,6 @@ import com.example.eshop.users.User;
 import com.example.eshop.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,6 +35,7 @@ public class OrderService {
         );
         order.setOrderTotal(basket.getTotalPrice());
         orderRepository.save(order);
+        basketService.clearBasket();
         return order;
     }
 
