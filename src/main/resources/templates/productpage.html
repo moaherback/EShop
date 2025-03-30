@@ -12,6 +12,11 @@
     <input type="submit" value="Search">
 </form>
 
+<h3>Show basket:</h3>
+<form action="/basket" method="get">
+    <input type="submit" value="Basket">
+</form>
+
 <h3> Categories: </h3>
 <form action="/products/category" method="get">
     <div th:each="productcategory : ${productcategories}">
@@ -32,7 +37,6 @@
         <p><input type="submit" value="Add"></p>
         <input type="hidden" name="productId" th:value="${product.productId}"/>
     </form>
-
 </div>
 
 </body>
