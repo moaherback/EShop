@@ -1,7 +1,5 @@
 package com.example.eshop.users;
 
-import com.example.eshop.products.Product;
-import com.example.eshop.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

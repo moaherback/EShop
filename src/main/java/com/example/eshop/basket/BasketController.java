@@ -1,6 +1,7 @@
 package com.example.eshop.basket;
 
 
+import com.example.eshop.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BasketController {
     @Autowired
     BasketService basketService;
+    @Autowired
+    UserService userService;
 
     @PostMapping("/basket/add")
     String addToBasket(
@@ -22,6 +25,9 @@ public class BasketController {
     }
     @GetMapping("/basket")
     String showBasket(Model model) {
+        if (userService.getLoggedInUser()== null){
+            return "redirect:/user/login";
+        }
 
         model.addAttribute("basketview", basketService.showBasket());
     return "basket";
@@ -30,6 +36,9 @@ public class BasketController {
     String updateBasket(
             @RequestParam int productId,
             @RequestParam int quantity){
+        if (userService.getLoggedInUser()== null){
+            return "redirect:/user/login";
+        }
         basketService.updateBasket(productId, quantity);
         return "redirect:/basket";
     }
@@ -38,6 +47,9 @@ public class BasketController {
     String removeProduct(
             @RequestParam int productId
     ){
+        if (userService.getLoggedInUser()== null){
+            return "redirect:/user/login";
+        }
         basketService.removeProduct(productId);
         return "redirect:/basket";
     }
