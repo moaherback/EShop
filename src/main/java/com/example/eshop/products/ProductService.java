@@ -14,8 +14,14 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void addProduct(Product product) {
-        productRepository.save(product);
+    public Product addProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    public Product getProduct(int id) {
+        return productRepository.findById((long) id).orElseThrow(
+                () -> new RuntimeException("Product not found")
+        );
     }
 
     public List<Product> getProductById(List<Integer> productIds) {
@@ -28,5 +34,15 @@ public class ProductService {
 
     public List<Product> getProductsByName(String name) {
         return productRepository.findByProductNameContaining(name);
+    }
+
+    public Product updateProductName(int productId, String newName) {
+        Product product = productRepository.findById((long) productId).orElseThrow();
+        product.setProductName(newName);
+        return productRepository.save(product);
+    }
+
+    public void deleteProduct(int id) {
+        productRepository.deleteById((long) id);
     }
 }
