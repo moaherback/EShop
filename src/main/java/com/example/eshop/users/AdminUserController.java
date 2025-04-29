@@ -26,7 +26,7 @@ public class AdminUserController {
         if (user == null || user.getRole() != 1 ) {
             model.addAttribute("loginfailed", true);
         } else {
-            model.addAttribute("adminloginsuccess", true);
+           return "redirect:/admin/orders";
         }
         return "adminloginpage";
     }
